@@ -1,0 +1,147 @@
+.search_room{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
+    
+}
+.room{
+    padding: 50px;
+    
+}
+.exit_button{
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+}
+.room_text{
+    margin-bottom: 20px;
+    color: rgb(158, 158, 238);
+    display: flex;
+    justify-content: center;
+}
+.input_room{
+    width: 300px;
+    border-top-left-radius:7% ;
+    border-bottom-left-radius:7% ;
+    border-right:none ;
+    border: 1px solid rgb(37, 37, 48);
+    background-color: black;
+    padding: 3px;
+}
+.button_room{
+    border-top-right-radius: 6%;
+    border-bottom-right-radius: 6%;
+    border-left:none ;
+    background-color: black;
+    padding: 3px;
+    border: 1px solid rgb(37, 37, 48);
+}
+
+.chat{
+    display: flex;
+    border: 1px solid rgb(44, 44, 44);
+    border-radius: 1%;
+    width: 70%;
+    justify-content: center;
+    margin-bottom: 3%;
+    
+}
+.chat_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+   
+
+}
+.messegae_input{
+    width: 95%;
+    padding: 6px;
+    margin-bottom: 20px;
+    border-top-left-radius:1% ;
+    border-bottom-left-radius:1% ;
+    border: none;
+}
+.send_button{
+    width: 5%;
+    padding: 6px;
+    border: none;
+    border-top-right-radius: 6%;
+    border-bottom-right-radius: 6%;
+}
+.user{
+    display: flex;
+    justify-content: flex-end; 
+   
+}
+.anyone{
+    display: flex;
+    justify-content: flex-start;
+}
+.user_messege_box{
+     display: flex;
+     flex-direction: column;
+     padding: 10px;
+     margin-left: 10px;
+     max-width: 70%;
+     word-break:break-all;
+}
+.name{
+    font-size: 18px;
+    color: rgb(30, 59, 59);
+}
+.text{
+   
+    border-radius: 10px; 
+}
+.rooms_button{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: black;
+    border: 1px black ;
+    border-radius: 10px;
+    justify-content: center;
+    
+}
+.send_form{
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    left: 25% ;
+}
+
+
+@media only screen and (max-width: 960px) {
+    .input_room{
+        width: 220px;
+    }
+    
+    .chat{
+        width: 100%;
+    }
+    .send_form{
+        bottom: 0;
+        width: 100%;
+        left: unset;
+    }
+    .messegae_input{
+        width: 90%;
+    }
+    .send_button{
+        width: 10%;
+        padding: 6px;
+        border: none;
+        border-top-right-radius: 6%;
+        border-bottom-right-radius: 6%;
+    }
+    .exit_button{
+     top: 3%;
+     bottom: unset;
+     right: unset;
+     left: 3%;
+    }
+}

@@ -4,7 +4,7 @@
     justify-content: center;
     background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
     overflow-y: auto;
-   
+
 }
 .room{
     padding: 50px;
@@ -124,6 +124,9 @@
 
 
 @media only screen and (max-width: 960px) {
+    .search_room{
+        background: linear-gradient(55deg, rgb(66, 66, 167),rgb(107, 68, 68)));
+    }
     .input_room{
         width: 220px;
     }

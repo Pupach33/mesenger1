@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import {addDoc, collection ,serverTimestamp,onSnapshot , query ,where, orderBy} from "firebase/firestore"
 import {auth, db } from "./firebase/firebase-config";
 
+
 export default function Chat({room}){
     const [newMessage , setNewMessage] = useState("")
     const [messeges , setMesseges] = useState([])
     const [name , setName] = useState()
-    const inputRef = useRef()
     const messegesRef = collection(db , "messeges")
-
+     const DivRef = useRef()
     useEffect(()=>{
     const querryMessages = query(messegesRef ,where("room","==", room),orderBy("createAt"))
     const unsubscrive =   onSnapshot(querryMessages,(snapshot)=> {
@@ -31,6 +31,12 @@ export default function Chat({room}){
 
         
     },[])
+   
+    useEffect(() => {
+      if (DivRef.current) {
+        DivRef.current.scrollTop = DivRef.current.scrollHeight;
+      }
+    }, [messeges]);
   
     
    async function handleSubmitForm(e){
@@ -50,9 +56,9 @@ export default function Chat({room}){
     
     return (
     
-    <div className="chat_box">
+    <div ref={DivRef} className="chat_box">
             <h1>Chat name : {room} </h1>
-            <div className="">{messeges.map((mes,inedx)=>
+            <div  className="">{messeges.map((mes,inedx)=>
             <div  className={mes.user === auth.currentUser.displayName? "user": "anyone" }>
                 <div key={inedx} className="user_messege_box">
                  <h2 className="name">{mes.user} </h2> 
@@ -61,7 +67,7 @@ export default function Chat({room}){
             </div>
                  )}</div>
             <form className="send_form" onSubmit={handleSubmitForm}>
-                <input ref={inputRef} className="messegae_input" onChange={(e)=> setNewMessage(e.target.value)} placeholder="Type your message..." value={newMessage} type="text" />
+                <input  className="messegae_input" onChange={(e)=> setNewMessage(e.target.value)} placeholder="Type your message..." value={newMessage} type="text" />
                 <input className="send_button" type="submit" value="send"/>
             </form>
     </div>

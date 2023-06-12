@@ -51,8 +51,7 @@ export default function Home() {
     //   return items.filter(({ name }) =>
     //     name.toLowerCase().includes(findname.toLowerCase())
     //   );
-    console.log(roomInput, "sdsdsd")
-    console.log(chatss, "chatss")
+   
 
   if(!log){
     return (

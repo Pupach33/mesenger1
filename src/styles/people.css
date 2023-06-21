@@ -1,0 +1,38 @@
+.people_div{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
+    flex-direction: column;
+}
+
+.list_of_friends{
+    list-style-type:none;
+    margin-top: 10px;
+}
+.list_of_friends_li{
+    margin: 10px;
+    border: 1px solid rgba(136, 133, 133, 0.212);
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+}
+.list_of_people_li{
+    margin: 10px;
+    border: 1px solid rgba(136, 133, 133, 0.212);
+    border-radius: 10px;
+    width: 260px;
+    padding: 10px;
+}
+.inFriends{
+    font-size: 20px;
+    color: green;
+}
+.addFriends{
+    margin: 20px ;
+    padding: 5px;
+    background-color: rgb(24, 22, 22);
+    border: 1px solid rgba(59, 49, 49, 0.582);
+    border-radius: 10px;
+    color: rgb(114, 138, 130);
+}

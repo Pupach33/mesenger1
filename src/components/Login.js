@@ -1,7 +1,9 @@
-import {auth, provider} from './firebase/firebase-config'
-import {createUserWithEmailAndPassword} from 'firebase/auth'
-import { signInWithPopup } from 'firebase/auth'
+import {auth, provider ,db} from './firebase/firebase-config'
+import {addDoc, collection, onSnapshot, query, serverTimestamp, where } from "firebase/firestore"
+import { getDatabase, ref, set } from "firebase/database";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
 import { useRef, useState } from 'react'
+import { doc, updateDoc , setDoc ,arrayUnion ,arrayRemove } from "firebase/firestore"; 
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
@@ -9,42 +11,97 @@ const cookies = new Cookies()
 
 
 export default function Login({setLog}){
-    const [trues ,setTrues] = useState(false)
-
+ const [login , setLogin] = useState(true)
+  const [message , setMessage] = useState("")
  const handleNameRef = useRef()
+ const handleEmailRef = useRef()
  const handlePasswordRef = useRef()
+ const handleSecPasswordRef = useRef()
 
     async function signWithGoogle(){
         try{
             const result =  await signInWithPopup(auth, provider)
-            cookies.set("auth-token",result.user.refreshToken) 
-            setLog(true)
+            cookies.set("auth-token",result.user.refreshToken)             
+            cookies.set("uid",result.user.uid)             
+          setLog(true)
         } catch(e){
             console.error(e)
-        }
-      
+        }  
     }
-    // async function handleFormSubmit(e){
-    //     e.preventDefault()
-    //     const result = await createUserWithEmailAndPassword(auth,handleNameRef.current.value , handlePasswordRef.current.value)
-    //     cookies.set("auth-token",result.user.refreshToken)
-    //     setLog(true)
-    // }
-    //  const text = "text"
-    //  const text2 = "password" 
+   async function regWithGoogle(){
+        try{
+            const result =  await signInWithPopup(auth, provider)
+            cookies.set("auth-token",result.user.refreshToken)
+            cookies.set("uid",result.user.uid)  
+            await setDoc(doc(db,"Users", `${result.user.uid}` ),{
+                name: result.user.displayName,
+                uid: result.user.uid,
+                chats: [],
+                friends: []
+            },{ merge: true })
+            
+          setLog(true)
+        } catch(e){
+            console.error(e)
+        }  
+    }
+    async function handleRegFormSubmit(e){
+        e.preventDefault()
+        if(handlePasswordRef.current.value === handleSecPasswordRef.current.value){
+           const result = await createUserWithEmailAndPassword(auth,handleEmailRef.current.value , handlePasswordRef.current.value )
+           updateProfile(auth.currentUser,{
+            displayName: `${handleNameRef.current.value}`
+           })
+           cookies.set("auth-token",result.user.refreshToken)
+           cookies.set("uid",result.user.uid)  
+            await setDoc(doc(db,"Users", `${result.user.uid}` ),{
+            name: handleNameRef.current.value,
+            uid: result.user.uid,
+            chats: [],
+            friends: []
+            },{ merge: true })
+          setLog(true) 
+        }else {
+            setMessage("An correct password")
+        }
+        
+    }
+    async function handleLogFormSubmit(e){
+        e.preventDefault()
+        const result = await signInWithEmailAndPassword (auth,handleEmailRef.current.value , handlePasswordRef.current.value)
+            cookies.set("auth-token",result.user.refreshToken)             
+            cookies.set("uid",result.user.uid)             
+          setLog(true)
+    }
      
 
     return (
         <div className="Login">
-            <h1 className='sign'>Sign in with Google </h1>
-            {/* <form onSubmit={handleFormSubmit}>
-                <input ref={handleNameRef} type='text' placeholder='name' />
-                <input ref={handlePasswordRef} type={trues?text:text2} placeholder='password' />
-                <button onClick={()=>setTrues(!trues)}>view pass</button>
-                <input type="submit" value="Login" />
-            </form> */}
-            
-            <button className='buttonLog' onClick={signWithGoogle}>Sign In With Google </button>
+            {login? <div className='login_div'>
+        <h1 className='logText'>Login</h1>
+               <form onSubmit={handleLogFormSubmit} className='login_input'>
+                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='name' />
+                <input className='input_for_log' ref={handlePasswordRef} type='password' placeholder='password' />
+                <input className='regButton' type='submit' value="login" />
+               </form>
+                
+       
+                <p>And you can login with <button className='buttonLog' onClick={signWithGoogle}>Google</button> or <button onClick={()=> setLogin(!login)} className='buttonLog'>regestration</button> </p>
+         </div> : 
+         <div className='login_div'>
+         <h1 className='logText'>Regestration</h1>
+         
+         <form className='login_input' onSubmit={handleRegFormSubmit}>
+                <input className='input_for_log' ref={handleNameRef} type='text' placeholder='name' />
+                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='email' />
+                <input className='input_for_log' ref={handlePasswordRef} type='password' placeholder='password' />
+                <input className='input_for_log' ref={handleSecPasswordRef} type='password' placeholder='password' />
+                <input className='regButton' type='submit' value="regesrtation" />
+                {message}
+         </form>
+        
+
+         </div>}     
         </div>
     )
 }

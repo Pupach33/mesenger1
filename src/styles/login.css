@@ -4,7 +4,6 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     background: linear-gradient(55deg, rgb(61, 61, 247), pink);
 }
 .sign{
@@ -18,4 +17,40 @@
     font-size: 15px;
     padding: 3px;
     background: linear-gradient(55deg, rgba(224, 171, 231, 0.384), #86b8f157);
+}
+
+.login_div{
+    display: flex;
+    align-items: center;
+   
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.192);
+    flex-direction: column;
+    border: 1px solid rgb(229, 104, 233);
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+}
+.logText{
+    margin-top: 30px;
+}
+.login_input{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    
+}
+.input_for_log{
+    margin: 5px;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: rgba(250, 225, 229, 0.308);
+    color:rgb(49, 33, 36) ;
+}
+.regButton{
+    background-color: rgba(252, 174, 248, 0.493);
+    width: 50%;
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 10px;
 }

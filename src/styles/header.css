@@ -1,0 +1,11 @@
+.header{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media only screen and (max-width: 960px){
+    .header{
+        font-size: 15px;
+    }
+}

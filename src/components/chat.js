@@ -75,7 +75,7 @@ export default function Chat({room}){
             <form  onSubmit={handleSubmitForm}>
                 {show && <div className="emoji"><Picker data={data} onEmojiSelect={handleSetNewMessageEm} /> </div> }
                 <input  className="messegae_input" onChange={(e)=> setNewMessage(e.target.value)} placeholder="Type your message..." value={newMessage} type="text" />
-                <button className="open_emoji" onClick={()=> setShow(!show)}><p className="open_emoji_text">😀</p></button>
+                <button type="button" className="open_emoji" onClick={()=> setShow(!show)}><p className="open_emoji_text">😀</p></button>
                 <input className="send_button" type="submit" value="send"/>
                 
             </form>

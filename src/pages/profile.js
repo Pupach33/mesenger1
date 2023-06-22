@@ -22,8 +22,8 @@ export default  function  Profile(){
     },[])
     async function handleChangeProfile(){
        await updateProfile(auth.currentUser,{
-            displayName: `${nameRef.current.value}`,
-            photoURL: `${imageRef.current.value}`
+            displayName: `${nameRef.current.value === ""?auth.currentUser.displayName: nameRef.current.value}`,
+            photoURL: `${imageRef.current.value === ""? auth.currentUser.photoURL: imageRef.current.value}`
            })
            setEdit(true)
     }

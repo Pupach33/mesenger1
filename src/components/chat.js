@@ -49,6 +49,7 @@ export default function Chat({room}){
             text: newMessage,
             createAt: serverTimestamp(),
             user: auth.currentUser.displayName,
+            user_uid: auth.currentUser.uid,
             user_photo: auth.currentUser.photoURL,
             room,
         })
@@ -63,7 +64,7 @@ export default function Chat({room}){
     
     <div ref={DivRef} className="chat_box">
             <div  className="">{messeges.map((mes,inedx)=>
-            <div  className={mes.user === auth.currentUser.displayName? "user": "anyone" }>
+            <div  className={mes.user_uid === auth.currentUser.uid? "user": "anyone" }>
                 <div key={inedx} className="user_messege_box">
                  {mes.user_photo !== null || mes.user_photo !== undefined? <img className="imgProfil" src={mes.user_photo} alt=""/>: ""}
                  <h2 className="name">{mes.user} </h2> 

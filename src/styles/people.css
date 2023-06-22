@@ -4,6 +4,7 @@
     align-items: center;
     background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
     flex-direction: column;
+    color: white;
 }
 
 .list_of_friends{
@@ -35,4 +36,29 @@
     border: 1px solid rgba(59, 49, 49, 0.582);
     border-radius: 10px;
     color: rgb(114, 138, 130);
+}
+.profil_div{
+    display: flex;
+}
+.profile_infi_div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    justify-content: center;
+}
+.profile_info_edit{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+.button_save{
+    margin-top: 10px;
+    width: 90%;
+    background-color: rgb(39, 37, 37);
+}
+.profileImg{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
 }

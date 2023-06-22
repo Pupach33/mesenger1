@@ -11,7 +11,7 @@ const cookies = new Cookies()
 
 
 export default function Login({setLog}){
- const [login , setLogin] = useState(true)
+ const [login , setLogin] = useState(false)
   const [message , setMessage] = useState("")
  const handleNameRef = useRef()
  const handleEmailRef = useRef()
@@ -80,7 +80,7 @@ export default function Login({setLog}){
             {login? <div className='login_div'>
         <h1 className='logText'>Login</h1>
                <form onSubmit={handleLogFormSubmit} className='login_input'>
-                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='name' />
+                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='email' />
                 <input className='input_for_log' ref={handlePasswordRef} type='password' placeholder='password' />
                 <input className='regButton' type='submit' value="login" />
                </form>
@@ -100,7 +100,7 @@ export default function Login({setLog}){
                 {message}
          </form>
         
-
+         <p>And you can regestration with <button className='buttonLog' onClick={regWithGoogle}>Google</button> or <button onClick={()=> setLogin(!login)} className='buttonLog'>login</button> </p>
          </div>}     
         </div>
     )

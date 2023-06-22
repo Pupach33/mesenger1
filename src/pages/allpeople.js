@@ -34,6 +34,7 @@ const [friends ,setFriends] = useState([])
         
     },[])
     async function addFriends(id,name){
+        alert(`${name} добавлен в друзья`)
         await(updateDoc(doc(db, "Users", `${auth.currentUser.uid}`),{
             friends: arrayUnion({
                 name: name,

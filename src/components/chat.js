@@ -49,6 +49,7 @@ export default function Chat({room}){
             text: newMessage,
             createAt: serverTimestamp(),
             user: auth.currentUser.displayName,
+            user_photo: auth.currentUser.photoURL,
             room,
         })
 
@@ -58,13 +59,13 @@ export default function Chat({room}){
     function handleSetNewMessageEm(e){
         setNewMessage(newMessage => newMessage += e.native)
     }
-   
     return (
     
     <div ref={DivRef} className="chat_box">
             <div  className="">{messeges.map((mes,inedx)=>
             <div  className={mes.user === auth.currentUser.displayName? "user": "anyone" }>
                 <div key={inedx} className="user_messege_box">
+                 {mes.user_photo !== null || mes.user_photo !== undefined? <img className="imgProfil" src={mes.user_photo} alt=""/>: ""}
                  <h2 className="name">{mes.user} </h2> 
                  <h2 className="text">{mes.text}</h2>
             
@@ -73,7 +74,7 @@ export default function Chat({room}){
                  )}</div>
                  <div className="send_form">
             <form  onSubmit={handleSubmitForm}>
-                {show && <div className="emoji"><Picker data={data} onEmojiSelect={handleSetNewMessageEm} /> </div> }
+                {show && <div className="emoji"><Picker  data={data} onEmojiSelect={handleSetNewMessageEm} /> </div> }
                 <input  className="messegae_input" onChange={(e)=> setNewMessage(e.target.value)} placeholder="Type your message..." value={newMessage} type="text" />
                 <button type="button" className="open_emoji" onClick={()=> setShow(!show)}><p className="open_emoji_text">😀</p></button>
                 <input className="send_button" type="submit" value="send"/>

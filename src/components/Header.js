@@ -8,7 +8,7 @@ export default function Header(){
             <Link href="/">Main</Link>
             <Link href="/chats">Private Chats</Link>
             <Link href="/allpeople">AllPeople</Link>
-            <Link href="/friends">YourFriends</Link>
+            <Link href="/profile">Profile</Link>
         </div>
     )  
     

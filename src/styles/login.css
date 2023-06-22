@@ -22,12 +22,11 @@
 .login_div{
     display: flex;
     align-items: center;
-   
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.192);
     flex-direction: column;
     border: 1px solid rgb(229, 104, 233);
     width: 350px;
-    height: 350px;
+    height: 370px;
     border-radius: 20px;
 }
 .logText{

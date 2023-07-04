@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp ,getApp} from "firebase/app";
 import {getAuth , GoogleAuthProvider } from "firebase/auth"
 import { getFirestore} from 'firebase/firestore'
 import { getStorage } from "firebase/storage";
@@ -18,15 +18,17 @@ const firebaseConfig = {
 
   appId: "1:1064522694000:web:023a8991e5eb797662e3b5",
 
-  measurementId: "G-SF2H042MF3"
-
+  measurementId: "G-SF2H042MF3",
+ 
+  
 };
 
 
 const app = initializeApp(firebaseConfig);
+const appForStorage = getApp()
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider()
 export const db = getFirestore(app)
-export const storage = getStorage(app);
+export const storage = getStorage(appForStorage,"gs://mesenger-69e05.appspot.com/");
 
  

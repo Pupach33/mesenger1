@@ -2,8 +2,8 @@
     display: flex;
     height: 100vh;
     justify-content: center;
-    background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
     overflow-y: auto;
+   
 }
 .room{
     padding: 50px;
@@ -58,18 +58,18 @@
     scrollbar-width: thin;
 }
 .messegae_input{
-    width: 90%;
-    padding: 6px;
+    width: 80%;
+    height: 25px;
     margin-bottom: 20px;
     border-top-left-radius:1% ;
     border-bottom-left-radius:1% ;
-    border: none;
     background-color: rgb(41, 41, 41);
+    border: none;
     color: white;
 }
 .send_button{
     width: 5%;
-    padding: 6px;
+    height: 27px;
     border: none;
     border-top-right-radius: 6%;
     border-bottom-right-radius: 6%;
@@ -79,7 +79,7 @@
 .user{
     display: flex;
     justify-content: flex-end; 
-  
+    
 }
 .anyone{
     display: flex;
@@ -92,8 +92,7 @@
      padding: 10px;
      margin-left: 10px;
      max-width: 70%;
-     word-break:break-all;
-     
+     word-break:break-all; 
 }
 .name{
     font-size: 18px;
@@ -103,12 +102,23 @@
    
     border-radius: 10px; 
 }
-.rooms_button{
+.rooms_button_dark{
     display: flex;
     width: 350px;
     margin: 0 auto;
     margin-top: 10px;
     background-color: black;
+    border: 1px black ;
+    border-radius: 10px;
+    justify-content: center;
+    color: white
+}
+.rooms_button_ligth{
+    display: flex;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.377);
     border: 1px black ;
     border-radius: 10px;
     justify-content: center;
@@ -130,22 +140,39 @@
   align-items: flex-end;
 }
 .open_emoji{
-    width: 5%;
-    padding: 6px;
+    width:4%;
+    height: 26px;
     border: none;
+    font-size: 15px;
     background-color: rgb(41, 41, 41);
-}
-.open_emoji_text{
-    font-size: 12px;
+   
 }
 .img{
     width: 30px;
     height: 30px;
 }
+.imgProfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%; 
+}
+.div_for_imgProfile{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.inputForImage{
+    /* opacity: 1;
+    width: 30px;
+    overflow: hidden;
+    position: absolute; */
+}
+.imageInChat{
+    width: 400px;
+    height: 370px;
+}
 @media only screen and (max-width: 960px) {
-    .search_room{
-        background: linear-gradient(55deg, rgb(66, 66, 167),rgb(107, 68, 68));
-    }
+    
     .input_room{
         width: 220px;
     }

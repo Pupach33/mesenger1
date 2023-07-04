@@ -1,10 +1,10 @@
 .Login{
+    background: linear-gradient(55deg, rgb(61, 61, 247), pink);
     display: flex;
     width: 100%;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(55deg, rgb(61, 61, 247), pink);
 }
 .sign{
     color: rgba(219, 250, 250, 0.842);
@@ -22,12 +22,11 @@
 .login_div{
     display: flex;
     align-items: center;
-   
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.192);
     flex-direction: column;
     border: 1px solid rgb(229, 104, 233);
     width: 350px;
-    height: 350px;
+    height: 370px;
     border-radius: 20px;
 }
 .logText{
@@ -53,4 +52,7 @@
     border-radius: 6px;
     margin: 0 auto;
     margin-top: 10px;
+}
+.text_under_input_log{
+    margin-top: -30px;
 }

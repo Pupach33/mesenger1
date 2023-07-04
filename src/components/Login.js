@@ -11,7 +11,7 @@ const cookies = new Cookies()
 
 
 export default function Login({setLog}){
- const [login , setLogin] = useState(true)
+ const [login , setLogin] = useState(false)
   const [message , setMessage] = useState("")
  const handleNameRef = useRef()
  const handleEmailRef = useRef()
@@ -80,27 +80,27 @@ export default function Login({setLog}){
             {login? <div className='login_div'>
         <h1 className='logText'>Login</h1>
                <form onSubmit={handleLogFormSubmit} className='login_input'>
-                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='name' />
+                <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='email' />
                 <input className='input_for_log' ref={handlePasswordRef} type='password' placeholder='password' />
                 <input className='regButton' type='submit' value="login" />
                </form>
                 
        
-                <p>And you can login with <button className='buttonLog' onClick={signWithGoogle}>Google</button> or <button onClick={()=> setLogin(!login)} className='buttonLog'>regestration</button> </p>
+                <p>And you can login with <button className='buttonLog' onClick={signWithGoogle}>Google</button> or <button onClick={()=> setLogin(!login)} className='buttonLog'>registration</button> </p>
          </div> : 
+
          <div className='login_div'>
-         <h1 className='logText'>Regestration</h1>
-         
+         <h1 className='logText'>Registration</h1>
          <form className='login_input' onSubmit={handleRegFormSubmit}>
                 <input className='input_for_log' ref={handleNameRef} type='text' placeholder='name' />
                 <input className='input_for_log' ref={handleEmailRef} type='email' placeholder='email' />
                 <input className='input_for_log' ref={handlePasswordRef} type='password' placeholder='password' />
                 <input className='input_for_log' ref={handleSecPasswordRef} type='password' placeholder='password' />
-                <input className='regButton' type='submit' value="regesrtation" />
+                <input className='regButton' type='submit' value="regisrtation" />
                 {message}
          </form>
         
-
+         <p className='text_under_input_log'> And you can regestration with <button className='buttonLog' onClick={regWithGoogle}>Google</button> or <button onClick={()=> setLogin(!login)} className='buttonLog'>login</button> </p>
          </div>}     
         </div>
     )

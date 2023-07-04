@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies()
 
 
-export default function PrivateChats(){
+export default function PrivateChats({theme}){
     const [privet ,setPrivet] = useState([])
     const [room ,setRoom] = useState(null)
     const [generalChats ,setGeneralChats] = useState([])
@@ -44,12 +44,12 @@ export default function PrivateChats(){
       </div> :
       <div>
       <div className="general_chat">
-          <h1>General chat</h1>
-        {generalChats.map(chat=> <button className="rooms_button" onClick={()=> setRoom(chat.room)}>{chat.room}</button>)}
+          <h1 className="people_title">General chat</h1>
+        {generalChats.map(chat=> <button className={theme?"rooms_button_dark":"rooms_button_ligth"} onClick={()=> setRoom(chat.room)}>{chat.room}</button>)}
       </div>
         
          <h1>Private Chats</h1>
-        {privet.map(chat => <button className="rooms_button" onClick={()=> setRoom(chat.room)}>{chat.name}</button>)}
+        {privet.map(chat => <button className={theme?"rooms_button_dark":"rooms_button_ligth"} onClick={()=> setRoom(chat.room)}>{chat.name}</button>)}
         </div>    
         }
           </div>

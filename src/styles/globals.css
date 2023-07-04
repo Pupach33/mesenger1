@@ -1,9 +1,22 @@
 
 
 
+body{
+  padding: 0;
+  margin: 0;
+  display: block;
+  color: white;
+}
+.ligth{
+  background: linear-gradient(55deg, rgb(61, 61, 247), pink);
+ 
+}
+.dark{
+  background: linear-gradient(55deg, rgb(20, 20, 53), rgb(14, 9, 9));
 
+}
 
-:root {
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -107,4 +120,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */

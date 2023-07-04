@@ -1,8 +1,33 @@
 .header{
     padding: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
+    background-color:black;
+    position: fixed;
 }
+.header_ligth{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+   
+}
+.nav_button_on_header{
+    text-decoration: none;
+    color: white; 
+}
+.button_for_cahnge_theme_dark{
+    background-color: black;
+    border: none;
+}
+.button_for_cahnge_theme_ligth{
+    background-color: rgba(255, 192, 203, 0);
+    border: none;
+}
+
+
 
 @media only screen and (max-width: 960px){
     .header{

@@ -7,7 +7,7 @@ const cookies = new Cookies()
 
 
 
-export default function AllPeople(){
+export default function AllPeople({theme}){
 const [people ,setPeople ] = useState([])
 const [friends ,setFriends] = useState([])
     useEffect(()=> {
@@ -34,6 +34,7 @@ const [friends ,setFriends] = useState([])
         
     },[])
     async function addFriends(id,name){
+        alert(`${name} добавлен в друзья`)
         await(updateDoc(doc(db, "Users", `${auth.currentUser.uid}`),{
             friends: arrayUnion({
                 name: name,
@@ -55,17 +56,17 @@ const [friends ,setFriends] = useState([])
             })
         }))
     }
-    console.log(auth)
+   
     return (
         <div className="people_div"> 
-        <h1>All People</h1>
+        <h1 className="people_title">All People</h1>
             <ul className="list_of_friends">
                 {people.map(people => {
                     if(people.uid !== auth.currentUser.uid ){
                         return(
-                          <li className="list_of_people_li" key={people.uid}>
+                          <li className={theme?"list_of_people_li_dark":"list_of_people_li_ligth"} key={people.uid}>
                           {people.name}
-                          {friends.includes(people.uid)? <h1 className="inFriends">In friends</h1>:<button className="addFriends" onClick={()=>addFriends(people.uid , people.name)}>addFriends</button>}
+                          {friends.includes(people.uid)? <h1 className={theme?"inFriends_dark":"inFriends_ligth"}>In friends</h1>:<button className="addFriends" onClick={()=>addFriends(people.uid , people.name)}>addFriends</button>}
                          </li>   
                         )
                     }

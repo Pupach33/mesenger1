@@ -15,6 +15,8 @@ const cookies = new Cookies()
 export default function App({ Component, pageProps }) {
   const [log ,setLog] = useState(false)
   const [loading ,setLodings] = useState(false)
+  const [theme ,setTheme] = useState(true)
+  const [click ,setClick] = useState(0)
   const router = useRouter()
 
   useEffect(()=> {
@@ -25,20 +27,28 @@ export default function App({ Component, pageProps }) {
       setLodings(false)
     })
   })
-  
+  console.log(theme)
   useEffect(()=>{
+    setTheme(cookies.get('theme'))
     setLog(cookies.get('auth-token'))
   },[])
-
+  function changeTheme(){
+    const themeForSession = !theme
+   setTheme(!theme)
+   setClick(click + 1)
+   cookies.set("theme",themeForSession)
+  }
+ console.log(click)
   if(!log){
     return <Login setLog={setLog}/>
   }else 
   return(
-  <div>
+  <div className={theme?'dark':'ligth'}>
     {
       loading? <img  src="/louder.gif" alt=""/> : <div> 
-    <Header />
-   <Component {...pageProps} /></div>
+    <Header click={click} theme={theme} onChangeTheme={changeTheme} />
+    <Component theme={theme} {...pageProps} /></div>
+    
     }
    
   </div> 
